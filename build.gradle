@@ -1,0 +1,39 @@
+
+plugins {
+    id 'java'
+    id 'net.serenity-bdd.serenity-gradle-plugin' version '4.2.22'
+}
+
+group = 'co.com.automation'
+version = '1.0-SNAPSHOT'
+
+repositories {
+    mavenCentral()
+}
+
+java {
+    toolchain {
+        languageVersion = JavaLanguageVersion.of(17)
+    }
+}
+
+dependencies {
+    implementation 'net.serenity-bdd:serenity-core:4.2.22'
+    implementation 'net.serenity-bdd:serenity-junit:4.2.22'
+    implementation 'net.serenity-bdd:serenity-screenplay:4.2.22'
+    implementation 'net.serenity-bdd:serenity-screenplay-webdriver:4.2.22'
+    implementation 'net.serenity-bdd:serenity-cucumber:4.2.22'
+    implementation 'io.cucumber:cucumber-java:7.14.0'
+    implementation 'io.cucumber:cucumber-junit:7.14.0'
+    implementation 'io.github.bonigarcia:webdrivermanager:5.9.2'
+    implementation 'org.slf4j:slf4j-simple:2.0.13'
+    testImplementation 'junit:junit:4.13.2'
+}
+
+test {
+    useJUnit()
+    systemProperty 'file.encoding', 'UTF-8'
+    testLogging {
+        events "passed", "skipped", "failed"
+    }
+}
